@@ -3,10 +3,11 @@ import numpy as np
 
 class Map:
 
-    def _init_(self, longueur, hauteur, matrice):
+    def _init_(self, longueur, hauteur, matrice, anciennecase):
         self.hauteur = hauteur
         self.longueur = longueur
         self.matrice = matrice
+        self.anciennecase = anciennecase
         
     def grid(self):
         nb_div_x, nb_div_y = rd.randint(1,5), rd.randint(1,5)
@@ -46,7 +47,7 @@ class Map:
                 liste_point_objet.append(listespoints_objet_)
        """
 
-    def remplir_matrice(self):
+    def remplir_matrice_init(self):
         #remplissage des salles
         salles = self.grid()
         for l,salle in enumerate (salles):
@@ -67,3 +68,14 @@ class Map:
         doors = self.door()
         for d in doors:
             self.matrice[d[0], d[1]] = 'DOOR'
+
+    def move_perso(self, direction, anciennecase, perso): #à appliquer avant de bouger le perso lui même
+        self.matrice[peso.posx, perso.posy] = anciennecase
+        self.anciennecase = self.matrice[perso.posx, perso.posy]
+        self.matrice[perso.posx + dx, perso.posy + dy] = 'PERSO'
+
+           
+
+        
+
+        
