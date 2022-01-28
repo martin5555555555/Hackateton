@@ -6,10 +6,12 @@ import argparse
 pg.init()
 screen = pg.display.set_mode((600, 600))
 clock = pg.time.Clock()
-clock = pg.time.Clock()
-
 
 tick = 10
+
+#rogue = classe_rogue()
+#background = classe_background()
+#monstres = classe_monstre()
 
 running = True
 while running:
@@ -24,20 +26,21 @@ while running:
             running = False
         elif event.type == pg.KEYDOWN:
             if event.key == pg.K_UP :
-                
+                #vérifier != mur
+                #rogue.move(up/down/...)
             elif event.key == pg.K_DOWN:
-                
+                #vérifier != mur
+                #rogue.move(up/down/...)
             elif event.key == pg.K_LEFT:
-                
+                #vérifier != mur
+                #rogue.move(up/down/...)
             elif event.key == pg.K_RIGHT:
+                #vérifier != mur
+                #rogue.move(up/down/...)
                 
     #SECTION 2 : affichage
     screen.fill((0,0,0)) #fond noir
-    for pix in pixels :
-            
-        rect = pg.Rect(x*20, y*20, 20, 20)
-        color = (0,0,0)
-        pg.draw.rect(screen, color, rect)
+    
     
     pg.display.set_caption(f"Score: {score}") #Affichage du score
     pg.display.update()
