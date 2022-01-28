@@ -9,11 +9,14 @@ def draw_rectangle(screen, i, j, size, color):
 
 
 pg.init()
-screen = pg.display.set_mode((600, 600))
+
 clock = pg.time.Clock()
-size = 5
+game = np.array([['MUR','MUR','SALLE'],[1,'MUR',0],[0,1,0]])
+ny, nx = game.shape
+size = 50
 tick = 10
-salles = [(10,60,10,60)]
+screen = pg.display.set_mode((nx*size, ny*size))
+
 
 #rogue = rogue()
 #background = classe_background()
@@ -49,15 +52,12 @@ while running:
     pg.display.update()
 
     screen.fill((0,0,0)) #fond noir
-    for salle in salles :
-        x0, x1, y0, y1 = salle
-        for i in range (x0, x1+1):
-            draw_rectangle(screen, i, y0, size, (255,0,0))
-            draw_rectangle(screen, i, y1, size, (255,0,0))
-        for j in range (y0+1, y1):
-            draw_rectangle(screen, x0, j, size, (255,0,0))
-            draw_rectangle(screen, x1, j, size, (255,0,0))
-    
+    for i in range(nx):
+        for j in range(ny):
+            if game[j,i] == 'MUR' :
+                draw_rectangle(screen, i, j, size, (255,255,255))
+            elif game[j,i] == 'SALLE' :
+                draw_rectangle(screen, i, j, size, (50,50,50))          
     
     pg.display.update()
 
